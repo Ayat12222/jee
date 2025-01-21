@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: commandes-service
+          uri: http://localhost:9001
+          predicates:
+            - Path=/api/Commandes/**
+          filters:
+            - RewritePath=/api/Commandes/(?<segment>.*), /Commandes/$\{segment}
