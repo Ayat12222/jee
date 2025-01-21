@@ -1,0 +1,34 @@
+spring:
+  cloud:
+    config:
+      enabled: false
+  application:
+    name: microservice-commande
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.H2Dialect
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+mes-config-ms:
+  commandes-last: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  health:
+    indicators:
+      db:
+        enabled: true
